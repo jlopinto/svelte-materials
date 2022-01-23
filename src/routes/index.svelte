@@ -1,5 +1,4 @@
 <script>
-	import Hello from 'svelte-materials/Hello.svelte';
 </script>
 
 <svelte:head>
@@ -7,6 +6,5 @@
 </svelte:head>
 
 <section>
-	<h1>svelte-materials</h1>
-	<Hello />
+	<h2>Home</h2>
 </section>
