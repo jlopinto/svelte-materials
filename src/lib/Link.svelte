@@ -1,11 +1,8 @@
 <script>
 	export let href = '';
-	const { class: classProps = '', ...restProps } = $$restProps;
-
-	console.log($$props);
 </script>
 
-<a {href} class={classProps} {...restProps}>
+<a {href} {...$$restProps}>
 	<slot name="before" />
 	<slot />
 	<slot name="after" />

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import ScrollList from '$lib/ScrollList.svelte';
-	import { MediaBlock, StickyFooter, Link } from 'svelte-materials';
+	import { ScrollList } from 'svelte-materials';
+	import { MediaBlock, StickyFooter, Link, Ul } from 'svelte-materials';
 	import '../app.css';
 </script>
 
@@ -15,13 +15,6 @@
 	</header>
 	<div class="container">
 		<div class="layout">
-			<ScrollList
-				items={[
-					{ component: Link, props: { href: '/components/scrollList' } },
-					{ component: Link, props: { href: '/components/scrollList' } },
-					{ component: Link, props: { href: '/components/stickyFooter' } }
-				]}
-			/>
 			<nav>
 				<ol>
 					<li><a href="/">Home</a></li>

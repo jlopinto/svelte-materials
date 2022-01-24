@@ -3,7 +3,7 @@
 	export let active = false;
 </script>
 
-<div class:active>Hello {name}</div>
+<div on:click class:active>Hello {name}</div>
 
 <style>
 	div {

@@ -1,33 +1,31 @@
 <script>
-	import { Demo, ScrollList, ScrollListItem } from 'svelte-materials';
+	import { tick } from 'svelte';
+	import { Demo, ScrollList } from 'svelte-materials';
+
 	let carousel;
+	let carouselActiveItem = 5;
 	let slider;
+	let sliderActiveItem = 1;
+	let items = Array.apply(null, { length: 10 }).map((_, i) => {
+		return { name: `item ${++i}` };
+	});
 
-	let items = [
-		{ component: Demo, props: { name: 'one' } },
-		{ component: Demo, props: { name: 'Two' } },
-		{ component: Demo, props: { name: 'Three' } },
-		{ component: Demo, props: { name: 'four' } },
-		{ component: Demo, props: { name: 'Five' } },
-		{ component: Demo, props: { name: 'Six' } },
-		{ component: Demo, props: { name: 'Seven' } },
-		{ component: Demo, props: { name: 'Height' } },
-		{ component: Demo, props: { name: 'Ten' } },
-		{ component: Demo, props: { name: 'Eleven' } },
-		{ component: Demo, props: { name: 'Twelve' } }
-	];
+	$: itemLn = items.length;
+	$: lastItem = itemLn - 1;
 
-	const add = () => {
-		items = [...items, { component: Demo, props: { name: `New ${items.length + 1}` } }];
-		carousel.goto(items.length, true);
+	const add = async () => {
+		items = [...items, { name: `New ${itemLn + 1}` }];
+		await tick();
+		carousel.goto(lastItem);
+		slider.goto(lastItem);
 	};
 
-	const remove = () => {
-		items = [...items.slice(0, items.length - 1)];
-		carousel.goto(items.length, true);
+	const remove = async () => {
+		items = [...items.slice(0, lastItem)];
+		await tick();
+		carousel.goto(lastItem);
+		slider.goto(lastItem);
 	};
-
-	const handleSelection = ({ detail }) => carousel.goto(detail, true);
 </script>
 
 <svelte:head>
@@ -37,30 +35,36 @@
 <section>
 	<h2>scrollList</h2>
 	<div class="container">
-		<ScrollList {items} bind:carousel on:selection={handleSelection}>
+		<ScrollList bind:list={carousel} bind:activeItem={carouselActiveItem}>
+			{#each items as { name }, i}
+				<li>
+					<Demo active={carouselActiveItem === i} {name} on:click={() => carousel.goto(i)} />
+				</li>
+			{/each}
 			<svelte:fragment slot="before">
-				<button on:click={() => carousel.prev(true)}>prev</button>
-				<button on:click={() => carousel.next(true)}>next</button>
+				<button on:click={() => carousel.goto(carouselActiveItem - 1)}>prev</button>
+				<button on:click={() => carousel.goto(carouselActiveItem + 1)}>next</button>
 			</svelte:fragment>
 		</ScrollList>
 
 		<div class="slider">
 			<ScrollList
-				scrollBehaviour={{
-					behavior: 'smooth',
-					block: 'start',
-					inline: 'center'
-				}}
-				activeItem={6}
-				--carousel-height="20vh"
-				{items}
-				bind:carousel={slider}
-				on:selection={({ detail }) => slider.goto(detail, true)}
+				--track-height="20vh"
+				--scrollbar-width="none"
+				--gap="1rem 0"
+				bind:list={slider}
+				bind:activeItem={sliderActiveItem}
 				flow="block"
+				scrollBehaviour={{
+					block: 'start'
+				}}
 			>
+				{#each items as { name }, i}
+					<Demo active={sliderActiveItem === i} {name} on:click={() => slider.goto(i)} />
+				{/each}
 				<svelte:fragment slot="before">
-					<button on:click={() => slider.prev()}>prev</button>
-					<button on:click={() => slider.next()}>next</button>
+					<button on:click={() => slider.goto(sliderActiveItem - 1)}>prev</button>
+					<button on:click={() => slider.goto(sliderActiveItem + 1)}>next</button>
 				</svelte:fragment>
 			</ScrollList>
 		</div>
@@ -73,5 +77,6 @@
 	.slider {
 		margin-top: 4rem;
 		height: 20rem;
+		display: inline-block;
 	}
 </style>
