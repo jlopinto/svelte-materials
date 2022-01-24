@@ -1,6 +1,7 @@
 <script>
 	import { tick } from 'svelte';
-	import { Demo, ScrollList } from 'svelte-materials';
+	import { ScrollList } from 'svelte-materials';
+	import Demo from '$lib/cosmetic/Demo.svelte';
 
 	let carousel;
 	let carouselActiveItem = 5;

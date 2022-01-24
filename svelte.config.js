@@ -14,6 +14,7 @@ const config = {
 		// hydrate the <div id="svelte"> element in src/app.html
 		target: '#svelte',
 		package: {
+			files: (file) => !file.startsWith('cosmetic'),
 			exports: (file) => file === 'index.js'
 		},
 		vite: {
