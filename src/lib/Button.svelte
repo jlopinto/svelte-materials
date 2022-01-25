@@ -17,16 +17,21 @@
 		background-color: var(--active-light);
 		cursor: pointer;
 		color: white;
-		transition: var(--transition, all .1s ease-out);
+		transition: var(--transition, all 0.1s ease-out);
 	}
 
-	button:hover,
-	button:focus {
+	button:not([disabled]):hover,
+	button:not([disabled]):focus {
 		background-color: var(--active);
-        transition-timing-function: ease-in;
+		transition-timing-function: ease-in;
 	}
 
-    button:active {
+	button:not([disabled]):active {
 		background-color: var(--active-dark);
-    }
+	}
+
+	button[disabled] {
+		background-color: var(--inactive);
+		cursor: not-allowed;
+	}
 </style>

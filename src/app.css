@@ -4,6 +4,8 @@
 	--active-dark: rgba(109, 33, 180, 0.979);
 	--active-light: rgba(159, 89, 224, 0.979);
 
+	--inactive: rgba(193, 164, 219, 0.979);
+
 	--bg: #222;
 	--body: #edf0f8;
 }
