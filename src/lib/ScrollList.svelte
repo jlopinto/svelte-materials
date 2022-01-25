@@ -26,8 +26,6 @@
 	};
 </script>
 
-<slot name="before" />
 <List bind:list={track} scrollable {...$$restProps}>
 	<slot />
 </List>
-<slot name="after" />

@@ -1,16 +1,18 @@
 <script type="ts">
+	import { _class } from '$lib/utils.ts';
 	export let type: 'ordered' | 'unordered' = 'unordered';
 	export let flow: 'inline' | 'block' = 'inline';
 	export let list: HTMLElement = null;
 	export let unstyled = false;
 	export let scrollable = false;
-	const classNames = [
+
+	const classNames = _class([
 		'track',
 		flow,
-		$$restProps?.class,
 		unstyled ? 'unstyled' : '',
-		scrollable ? 'scrollable unstyled' : ''
-	].join(' ');
+		scrollable ? 'scrollable unstyled' : '',
+		$$restProps?.class
+	]);
 </script>
 
 {#if type === 'ordered'}
