@@ -8,7 +8,7 @@
 
 <style>
 	div {
-		width: 8rem;
+		min-width: 8rem;
 		text-align: center;
 		padding: 1rem;
 		border: 1px dashed #ccc;

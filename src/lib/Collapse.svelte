@@ -1,37 +1,42 @@
 <script type="ts">
 	import { onMount, createEventDispatcher } from 'svelte';
-	import { cubicOut } from 'svelte/easing';
+	import { cubicIn as motionEase } from 'svelte/easing';
 	import { tweened } from 'svelte/motion';
-	import { elemChildsHeightSum } from '$lib/utils.ts';
+	import { childsHeight } from '$lib/utils.ts';
 
 	export let isOpen = false;
 	export let motion = {};
+	export let collapsing = false;
 
 	const dispatch = createEventDispatcher();
 	const defaultMotion = {
-		duration: 200,
-		easing: cubicOut
+		duration: 100,
+		easing: motionEase
 	};
 
 	let rootEl: HTMLElement;
 	let contentHeight;
 	let progress;
-	let updating = false;
 
-	const collapse = (goal, verb) => {
-		contentHeight = elemChildsHeightSum(rootEl);
+	const collapse = (verb: 'open' | 'close') => {
+		contentHeight = childsHeight(rootEl);
+
+		if (verb === 'close') {
+			progress.set(contentHeight, { duration: 0 });
+			contentHeight = 0;
+		}
+		collapsing = true;
 		dispatch(`${verb}ing`, { isOpen });
-		isOpen = !isOpen;
-		updating = true;
-		progress.set(goal).then(() => {
-			updating = false;
+		progress.set(contentHeight).then(() => {
+			isOpen = !isOpen;
+			collapsing = false;
 			rootEl.removeAttribute('style');
 			dispatch(`${verb}ed`, { isOpen });
 		});
 	};
 
 	onMount(() => {
-		contentHeight = elemChildsHeightSum(rootEl);
+		contentHeight = childsHeight(rootEl);
 
 		progress = tweened(null, {
 			...defaultMotion,
@@ -43,12 +48,12 @@
 	});
 
 	export const controls = {
-		open: () => collapse(contentHeight, 'open'),
-		close: () => collapse(0, 'open')
+		open: () => collapse('open'),
+		close: () => collapse('close')
 	};
 </script>
 
-<div class:closed={!updating && !isOpen} bind:this={rootEl}>
+<div class:closed={!isOpen} bind:this={rootEl}>
 	<slot />
 </div>
 

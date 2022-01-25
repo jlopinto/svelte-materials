@@ -1,6 +1,27 @@
+<script context="module">
+	export async function load({ url }) {
+		return {
+			props: {
+				pathname: url.pathname
+			}
+		};
+	}
+</script>
+
 <script lang="ts">
 	import { MediaBlock, Spread, Link, ScrollList } from 'svelte-materials';
 	import '../app.css';
+
+	export let pathname;
+
+	const navContent = [
+		{ url: '/', label: 'home' },
+		{ url: '/components/scrollList', label: 'ScrollList' },
+		{ url: '/components/mediaBlock', label: 'MediaBlock' },
+		{ url: '/components/spread', label: 'Spread' },
+		{ url: '/components/link', label: 'Link' },
+		{ url: '/components/collapse', label: 'Collapse' }
+	];
 </script>
 
 <Spread>
@@ -14,16 +35,16 @@
 	</header>
 	<div class="container">
 		<div class="layout">
-			<nav>
-				<ol>
-					<li><a href="/">Home</a></li>
-					<li><a href="/components/scrollList">ScrollList</a></li>
-					<li><a href="/components/mediaBlock">MediaBlock</a></li>
-					<li><a href="/components/stickyFooter">StickyFooter</a></li>
-					<li><a href="/components/button">Button</a></li>
-					<li><a href="/components/link">Link</a></li>
-					<li><a href="/components/collapse">Collapse</a></li>
-				</ol>
+			<nav class="mainnav">
+				<ScrollList flow="block" --scrollbar-width="none">
+					{#each navContent as item, i}
+						<li>
+							<Link class="mainnav-item {item.url === pathname ? 'active' : ''}" href={item.url}
+								>{item.label}</Link
+							>
+						</li>
+					{/each}
+				</ScrollList>
 			</nav>
 			<main>
 				<slot />
@@ -52,11 +73,35 @@
 	}
 
 	.layout {
-		display: flex;
-		flex-direction: row;
+		display: grid;
+		grid-template-columns: repeat(9, minmax(0, 1fr));
+		gap:1 rem;
 	}
 
 	main {
-		max-width: 100%;
+		grid-column: span 7 / span 7;
+	}
+
+	.mainnav {
+		grid-column: span 2 / span 2;
+	}
+
+	.mainnav :global(.mainnav-item) {
+		padding: 0.5rem 1rem;
+		display: block;
+		border-left: 2px solid var(--inactive);
+	}
+
+	.mainnav :global(.mainnav-item:hover) {
+		border-color: var(--active);
+	}
+
+	.mainnav :global(li:not(:first-child) .mainnav-item) {
+		margin-top: 0.2rem;
+	}
+
+	.mainnav :global(.active) {
+		border-color: var(--active);
+		color: var(--active);
 	}
 </style>
