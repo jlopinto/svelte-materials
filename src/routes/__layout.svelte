@@ -20,6 +20,9 @@
 					<li><a href="/components/scrollList">ScrollList</a></li>
 					<li><a href="/components/mediaBlock">MediaBlock</a></li>
 					<li><a href="/components/stickyFooter">StickyFooter</a></li>
+					<li><a href="/components/button">Button</a></li>
+					<li><a href="/components/link">Link</a></li>
+					<li><a href="/components/collapse">Collapse</a></li>
 				</ol>
 			</nav>
 			<main>
