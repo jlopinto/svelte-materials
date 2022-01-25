@@ -4,13 +4,13 @@
 	export let activeItem = 0;
 	export let scrollBehaviour = {};
 
-	const scrollBehaviourDefault = {
+	const scrollBehaviourDefault: ScrollIntoViewOptions = {
 		behavior: 'smooth',
 		block: 'nearest',
 		inline: 'center'
 	};
 
-	let track;
+	let track: HTMLElement;
 
 	export const list = {
 		activeItem,
