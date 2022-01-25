@@ -46,10 +46,16 @@
 		flex-direction: column;
 		overflow-y: scroll;
 		overflow-x: hidden;
+		scroll-snap-type: var(--block-scroll-snap, block proximity);
+	}
+
+	.scrollable :global(> *) {
+		scroll-snap-align: start;
 	}
 
 	.scrollable.inline {
 		overflow-y: hidden;
 		overflow-x: scroll;
+		scroll-snap-type: var(--inline-scroll-snap, inline proximity);
 	}
 </style>
