@@ -15,7 +15,7 @@
 	export const list = {
 		activeItem,
 		goto: (index, scroll = true) => {
-			activeItem = Math.max(0, Math.min(index, track.children.length));
+			activeItem = Math.max(0, Math.min(index, track.children.length - 1));
 			if (scroll) {
 				track.children[activeItem].scrollIntoView({
 					...scrollBehaviourDefault,
