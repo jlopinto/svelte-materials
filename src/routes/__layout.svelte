@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { MediaBlock, StickyFooter, Link } from 'svelte-materials';
+	import { MediaBlock, Spread, Link, ScrollList } from 'svelte-materials';
 	import '../app.css';
 </script>
 
-<StickyFooter>
+<Spread>
 	<header>
 		<div class="container">
 			<MediaBlock --align-items="center" class="py">
@@ -33,7 +33,7 @@
 	<footer slot="footer" class="py">
 		<div class="container">mon footer</div>
 	</footer>
-</StickyFooter>
+</Spread>
 
 <style>
 	:global(.debug, .debug *) {

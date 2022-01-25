@@ -1,11 +1,11 @@
 <script>
-	import { StickyFooter } from 'svelte-materials';
+	import { Spread } from 'svelte-materials';
 </script>
 
-<StickyFooter class="h-200" --min-height="100%">
+<Spread class="h-200" --min-height="100%">
 	Some card content
 	<div slot="footer">card footer content</div>
-</StickyFooter>
+</Spread>
 
 <style>
 	:global(.h-200) {
