@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { ScrollList } from 'svelte-materials';
-	import { MediaBlock, StickyFooter, Link, Ul } from 'svelte-materials';
+	import { MediaBlock, StickyFooter, Link } from 'svelte-materials';
 	import '../app.css';
 </script>
 
@@ -24,9 +23,7 @@
 				</ol>
 			</nav>
 			<main>
-				<div class="container">
-					<slot />
-				</div>
+				<slot />
 			</main>
 		</div>
 	</div>
@@ -42,9 +39,9 @@
 		background-color: var(--debug-bg, rgba(44, 135, 203, 0.2));
 	}
 	.container {
-		max-width: 960px;
+		max-width: 100%;
+		width: 960px;
 		margin-inline: auto;
-		width: 100%;
 	}
 
 	h1 {
@@ -54,5 +51,9 @@
 	.layout {
 		display: flex;
 		flex-direction: row;
+	}
+
+	main {
+		max-width: 100%;
 	}
 </style>

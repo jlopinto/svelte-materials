@@ -92,10 +92,6 @@ button:focus:not(:focus-visible) {
 	padding-bottom: 1rem;
 }
 
-ul {
-	list-style: none;
-	padding: 0;
-}
 
 @media (min-width: 720px) {
 	h1 {

@@ -35,41 +35,40 @@
 
 <section>
 	<h2>scrollList</h2>
-	<div class="container">
-		<ScrollList bind:list={carousel} bind:activeItem={carouselActiveItem}>
+	<ScrollList bind:list={carousel} bind:activeItem={carouselActiveItem} --gap="0 1rem">
+		{#each items as { name }, i}
+			<li>
+				<Demo active={carouselActiveItem === i} {name} on:click={() => carousel.goto(i)} />
+			</li>
+		{/each}
+		<svelte:fragment slot="before">
+			<button on:click={() => carousel.goto(carouselActiveItem - 1)}>prev</button>
+			<button on:click={() => carousel.goto(carouselActiveItem + 1)}>next</button>
+		</svelte:fragment>
+	</ScrollList>
+
+	<div class="slider">
+		<ScrollList
+			--track-height="20vh"
+			--scrollbar-width="none"
+			--gap="1rem 0"
+			bind:list={slider}
+			bind:activeItem={sliderActiveItem}
+			flow="block"
+			scrollBehaviour={{
+				block: 'start'
+			}}
+		>
 			{#each items as { name }, i}
-				<li>
-					<Demo active={carouselActiveItem === i} {name} on:click={() => carousel.goto(i)} />
-				</li>
+				<Demo active={sliderActiveItem === i} {name} on:click={() => slider.goto(i)} />
 			{/each}
 			<svelte:fragment slot="before">
-				<button on:click={() => carousel.goto(carouselActiveItem - 1)}>prev</button>
-				<button on:click={() => carousel.goto(carouselActiveItem + 1)}>next</button>
+				<button on:click={() => slider.goto(sliderActiveItem - 1)}>prev</button>
+				<button on:click={() => slider.goto(sliderActiveItem + 1)}>next</button>
 			</svelte:fragment>
 		</ScrollList>
-
-		<div class="slider">
-			<ScrollList
-				--track-height="20vh"
-				--scrollbar-width="none"
-				--gap="1rem 0"
-				bind:list={slider}
-				bind:activeItem={sliderActiveItem}
-				flow="block"
-				scrollBehaviour={{
-					block: 'start'
-				}}
-			>
-				{#each items as { name }, i}
-					<Demo active={sliderActiveItem === i} {name} on:click={() => slider.goto(i)} />
-				{/each}
-				<svelte:fragment slot="before">
-					<button on:click={() => slider.goto(sliderActiveItem - 1)}>prev</button>
-					<button on:click={() => slider.goto(sliderActiveItem + 1)}>next</button>
-				</svelte:fragment>
-			</ScrollList>
-		</div>
 	</div>
+
 	<button on:click={add}>Add</button>
 	<button on:click={remove}>remove</button>
 </section>

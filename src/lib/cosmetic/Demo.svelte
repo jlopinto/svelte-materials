@@ -1,9 +1,10 @@
 <script type="ts">
 	export let name = '';
 	export let active = false;
+	const { class: className = '' } = $$restProps;
 </script>
 
-<div on:click class:active>Hello {name}</div>
+<div on:click class={className} class:active>Hello {name}</div>
 
 <style>
 	div {
