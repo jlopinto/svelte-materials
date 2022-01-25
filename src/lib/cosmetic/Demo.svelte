@@ -19,6 +19,6 @@
 	}
 
 	.active {
-		border-color: blueviolet;
+		border-color: var(--active);
 	}
 </style>

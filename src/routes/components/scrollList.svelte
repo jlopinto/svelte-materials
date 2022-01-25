@@ -2,6 +2,7 @@
 	import { tick } from 'svelte';
 	import { ScrollList } from 'svelte-materials';
 	import Demo from '$lib/cosmetic/Demo.svelte';
+	import Button from '$lib/Button.svelte';
 
 	let carousel;
 	let carouselActiveItem = 5;
@@ -35,18 +36,62 @@
 
 <section>
 	<h2>scrollList</h2>
-	<ScrollList bind:list={carousel} bind:activeItem={carouselActiveItem} --gap="0 1rem">
-		{#each items as { name }, i}
+	<p>
+		Lorem ipsum, dolor sit amet consectetur adipisicing elit. Porro id voluptatem ipsam voluptatum
+		nisi eaque hic quidem beatae sapiente voluptates itaque vero illum quia, architecto eius. Ipsum
+		rem vero corrupti!
+	</p>
+
+	<div>
+		<Button on:click={add} label="Add item" />
+		<Button on:click={remove} label="Remove item" />
+	</div>
+
+	<h3>Basic ScrollList</h3>
+	<ScrollList>
+		{#each items as { name }}
 			<li>
-				<Demo active={carouselActiveItem === i} {name} on:click={() => carousel.goto(i)} />
+				<Demo {name} />
 			</li>
 		{/each}
-		<svelte:fragment slot="before">
-			<button on:click={() => carousel.goto(carouselActiveItem - 1)}>prev</button>
-			<button on:click={() => carousel.goto(carouselActiveItem + 1)}>next</button>
-		</svelte:fragment>
 	</ScrollList>
 
+	<h3>Basic ScrollList without scrollbar</h3>
+	<p>maj + scroll over to scroll it vertically</p>
+	<ScrollList --scrollbar-width="none">
+		{#each items as { name }}
+			<li>
+				<Demo {name} />
+			</li>
+		{/each}
+	</ScrollList>
+
+	<h3>ScrollList with controls</h3>
+
+	<div style="display: flex;">
+		<ScrollList bind:list={carousel} bind:activeItem={carouselActiveItem} --gap="2rem">
+			{#each items as { name }, i}
+				<li>
+					<Demo active={carouselActiveItem === i} {name} on:click={() => carousel.goto(i)} />
+				</li>
+			{/each}
+			<svelte:fragment slot="before">
+				<Button
+					on:click={() => carousel.goto(carouselActiveItem - 1)}
+					label="prev"
+					class="control control--prev"
+				/>
+			</svelte:fragment>
+			<svelte:fragment slot="after">
+				<Button
+					on:click={() => carousel.goto(carouselActiveItem + 1)}
+					label="next"
+					class="control control--next"
+				/>
+			</svelte:fragment>
+		</ScrollList>
+	</div>
+	<h3>Vertical ScrollList with controls</h3>
 	<div class="slider">
 		<ScrollList
 			--track-height="20vh"
@@ -63,20 +108,24 @@
 				<Demo active={sliderActiveItem === i} {name} on:click={() => slider.goto(i)} />
 			{/each}
 			<svelte:fragment slot="before">
-				<button on:click={() => slider.goto(sliderActiveItem - 1)}>prev</button>
-				<button on:click={() => slider.goto(sliderActiveItem + 1)}>next</button>
+				<Button on:click={() => slider.goto(sliderActiveItem - 1)} label="prev" />
+				<Button on:click={() => slider.goto(sliderActiveItem + 1)} label="next" />
 			</svelte:fragment>
 		</ScrollList>
 	</div>
-
-	<button on:click={add}>Add</button>
-	<button on:click={remove}>remove</button>
 </section>
 
 <style>
 	.slider {
-		margin-top: 4rem;
 		height: 20rem;
 		display: inline-block;
+	}
+
+	:global(.control--next) {
+		margin-left: 1rem;
+	}
+
+	:global(.control--prev) {
+		margin-right: 1rem;
 	}
 </style>

@@ -10,7 +10,3 @@
 	<li>plip</li>
 	<li>plip</li>
 </List>
-
-<style>
-	
-</style>
