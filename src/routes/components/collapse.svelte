@@ -2,24 +2,35 @@
 	import { Button, Collapse } from 'svelte-materials';
 
 	let collapse1;
+	let collapse1IsOpen = false;
 	let collapse2;
-	let isOpen = true;
+	let collapse2IsOpen = true;
 </script>
 
-<Collapse bind:controls={collapse1}>
-	<div>
-		Lorem ipsum dolor, sit amet consectetur adipisicing elit. Neque iste consequuntur sint tempore
-		praesentium. Porro obcaecati debitis, quo, nostrum soluta atque quis dolores est quisquam
-		accusamus, corporis id quas commodi. Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-		Neque iste consequuntur sint tempore praesentium. Porro obcaecati debitis, quo, nostrum soluta
-		atque quis dolores est quisquam accusamus, corporis id quas commodi.
-	</div>
-</Collapse>
 <Button on:click={() => collapse1.open()} label="Open" />
 <Button on:click={() => collapse1.close()} label="Close" />
-<Button on:click={() => collapse1.toggle()} label="Toggle" />
+<Button on:click={() => (collapse1IsOpen ? collapse1.close() : collapse1.open())} label="Toggle" />
 
-<Collapse bind:controls={collapse2} bind:isOpen>
+<Collapse bind:controls={collapse1} bind:isOpen={collapse1IsOpen}>
+	<p>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget ex euismod, euismod nunc eu,
+		consectetur nunc. Sed euismod, urna eu tincidunt tincidunt, nisi nisl tincidunt nunc, euismod
+		aliquet nunc nisl euismod nunc.
+	</p>
+	<div>
+		Lorem ipsum dolor, sit amet consectetur adipisicing elit. Neque iste consequuntur sint tempore
+		praesentium. Porro obcaecati debitis, quo, nostrum soluta atque quis dolores est quisquam
+		accusamus, corporis id quas commodi. Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+		Neque iste consequuntur sint tempore praesentium. Porro obcaecati debitis, quo, nostrum soluta
+		atque quis dolores est quisquam accusamus, corporis id quas commodi.
+	</div>
+	<div>
+		Lorem ipsum dolor, sit amet consectetur adipisicing elit. Neque iste consequuntur sint tempore
+		praesentium. Porro obcaecati debitis, quo, nostrum soluta atque quis dolores est quisquam
+		accusamus, corporis id quas commodi. Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+		Neque iste consequuntur sint tempore praesentium. Porro obcaecati debitis, quo, nostrum soluta
+		atque quis dolores est quisquam accusamus, corporis id quas commodi.
+	</div>
 	<div>
 		Lorem ipsum dolor, sit amet consectetur adipisicing elit. Neque iste consequuntur sint tempore
 		praesentium. Porro obcaecati debitis, quo, nostrum soluta atque quis dolores est quisquam
@@ -28,6 +39,20 @@
 		atque quis dolores est quisquam accusamus, corporis id quas commodi.
 	</div>
 </Collapse>
-<Button on:click={() => collapse2.open()} label="Open" />
-<Button on:click={() => collapse2.close()} label="Close" />
-<Button on:click={() => collapse2.toggle()} label="Toggle {isOpen}" />
+
+<Button disabled={collapse2IsOpen} on:click={() => collapse2.open()} label="Open" />
+<Button disabled={!collapse2IsOpen} on:click={() => collapse2.close()} label="Close" />
+<Button
+	on:click={() => (collapse2IsOpen ? collapse2.close() : collapse2.open())}
+	label="Toggle, is open ? {collapse2IsOpen}"
+/>
+
+<Collapse bind:controls={collapse2} bind:isOpen={collapse2IsOpen}>
+	<div>
+		Lorem ipsum dolor, sit amet consectetur adipisicing elit. Neque iste consequuntur sint tempore
+		praesentium. Porro obcaecati debitis, quo, nostrum soluta atque quis dolores est quisquam
+		accusamus, corporis id quas commodi. Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+		Neque iste consequuntur sint tempore praesentium. Porro obcaecati debitis, quo, nostrum soluta
+		atque quis dolores est quisquam accusamus, corporis id quas commodi.
+	</div>
+</Collapse>
