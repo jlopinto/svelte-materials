@@ -1,5 +1,5 @@
 <script type="ts">
-	export let type: 'ordered' | 'unorered' = 'unorered';
+	export let type: 'ordered' | 'unordered' = 'unordered';
 	export let flow: 'inline' | 'block' = 'inline';
 	export let list: HTMLElement = null;
 	export let unstyled = false;
