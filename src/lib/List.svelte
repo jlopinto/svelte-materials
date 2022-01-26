@@ -1,12 +1,12 @@
 <script type="ts">
-	import { _class } from '$lib/utils.ts';
+	import { cleanClass } from 'svelte-materials';
 	export let type: 'ordered' | 'unordered' = 'unordered';
 	export let flow: 'inline' | 'block' = 'inline';
 	export let list: HTMLElement = null;
 	export let unstyled = false;
 	export let scrollable = false;
 
-	const classNames = _class([
+	const classNames = cleanClass([
 		'track',
 		flow,
 		unstyled ? 'unstyled' : '',

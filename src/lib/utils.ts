@@ -1,4 +1,4 @@
-export const _class = (classNames): string =>
+export const cleanClass = (classNames): string =>
 	[...new Set(classNames.filter((className = '') => className.length))].join(' ');
 
 export const childsHeight = (parent: HTMLElement) =>

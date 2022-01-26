@@ -5,3 +5,5 @@ export { default as ScrollList } from './ScrollList.svelte';
 export { default as MediaBlock } from './MediaBlock.svelte';
 export { default as Spread } from './Spread.svelte';
 export { default as Collapse } from './Collapse.svelte';
+
+export { cleanClass, childsHeight } from './utils.js';

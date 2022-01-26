@@ -2,7 +2,7 @@
 	import { onMount, createEventDispatcher } from 'svelte';
 	import { cubicIn as motionEase } from 'svelte/easing';
 	import { tweened } from 'svelte/motion';
-	import { childsHeight } from '$lib/utils.ts';
+	import { childsHeight } from 'svelte-materials';
 
 	export let isOpen = false;
 	export let motion = {};
