@@ -47,7 +47,7 @@
 <h2>Alignements</h2>
 
 <h3>Start (default)</h3>
-<MediaBlock --align-items="start">
+<MediaBlock variant={{ alignItems: 'start' }}>
 	<svelte:fragment slot="start">
 		<img src="https://picsum.photos/200/200" height="200" width="200" class="mr" alt="" />
 	</svelte:fragment>
@@ -60,7 +60,7 @@
 </MediaBlock>
 
 <h3>center</h3>
-<MediaBlock --align-items="center">
+<MediaBlock variant={{ alignItems: 'center' }}>
 	<svelte:fragment slot="start">
 		<img src="https://picsum.photos/200/200" height="200" width="200" class="mr" alt="" />
 	</svelte:fragment>
@@ -73,7 +73,7 @@
 </MediaBlock>
 
 <h3>End</h3>
-<MediaBlock --align-items="end">
+<MediaBlock variant={{ alignItems: 'end' }}>
 	<svelte:fragment slot="start">
 		<img src="https://picsum.photos/200/200" height="200" width="200" class="mr" alt="" />
 	</svelte:fragment>

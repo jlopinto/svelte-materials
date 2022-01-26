@@ -1,8 +1,10 @@
 <script type="ts">
+	import { closed } from './Collapse.css';
+	import { overflowHidden } from '$lib/styles/utilities.css';
 	import { onMount, createEventDispatcher } from 'svelte';
 	import { cubicIn as motionEase } from 'svelte/easing';
 	import { tweened } from 'svelte/motion';
-	import { childsHeight } from 'svelte-materials';
+	import { childsHeight, cleanClass } from 'svelte-materials';
 
 	export let isOpen = false;
 	export let motion = {};
@@ -53,16 +55,6 @@
 	};
 </script>
 
-<div class:closed={!isOpen} bind:this={rootEl}>
+<div class={cleanClass([!isOpen ? closed : '', overflowHidden])} bind:this={rootEl}>
 	<slot />
 </div>
-
-<style>
-	div {
-		overflow: hidden;
-	}
-
-	.closed {
-		height: 0;
-	}
-</style>

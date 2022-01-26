@@ -9,6 +9,9 @@
 </script>
 
 <script lang="ts">
+	import '$lib/styles/index.css';
+	import { themeClass } from '$lib/styles/theme-default.css';
+
 	import { MediaBlock, Spread, Link, ScrollList } from 'svelte-materials';
 	import '../app.css';
 
@@ -75,7 +78,7 @@
 	.layout {
 		display: grid;
 		grid-template-columns: repeat(9, minmax(0, 1fr));
-		gap:1 rem;
+		gap: 1 rem;
 	}
 
 	main {
