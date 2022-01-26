@@ -1,9 +1,9 @@
 <script>
-	export let href;
+  export let href;
 </script>
 
 <a {href} {...$$restProps}>
-	<slot name="before" />
-	<slot />
-	<slot name="after" />
+  <slot name="before" />
+  <slot />
+  <slot name="after" />
 </a>

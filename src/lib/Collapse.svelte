@@ -1,60 +1,60 @@
 <script type="ts">
-	import { closed } from './Collapse.css';
-	import { overflowHidden } from '$lib/styles/utilities.css';
-	import { onMount, createEventDispatcher } from 'svelte';
-	import { cubicIn as motionEase } from 'svelte/easing';
-	import { tweened } from 'svelte/motion';
-	import { childsHeight, cleanClass } from 'svelte-materials';
+  import { closed } from './Collapse.css';
+  import { overflowHidden } from '$lib/styles/utilities.css';
+  import { onMount, createEventDispatcher } from 'svelte';
+  import { cubicIn as motionEase } from 'svelte/easing';
+  import { tweened } from 'svelte/motion';
+  import { childsHeight, cleanClass } from 'svelte-materials';
 
-	export let isOpen = false;
-	export let motion = {};
-	export let collapsing = false;
+  export let isOpen = false;
+  export let motion = {};
+  export let collapsing = false;
 
-	const dispatch = createEventDispatcher();
-	const defaultMotion = {
-		duration: 100,
-		easing: motionEase
-	};
+  const dispatch = createEventDispatcher();
+  const defaultMotion = {
+    duration: 100,
+    easing: motionEase
+  };
 
-	let rootEl: HTMLElement;
-	let contentHeight;
-	let progress;
+  let rootEl: HTMLElement;
+  let contentHeight;
+  let progress;
 
-	const collapse = (verb: 'open' | 'close') => {
-		contentHeight = childsHeight(rootEl);
+  const collapse = (verb: 'open' | 'close') => {
+    contentHeight = childsHeight(rootEl);
 
-		if (verb === 'close') {
-			progress.set(contentHeight, { duration: 0 });
-			contentHeight = 0;
-		}
-		collapsing = true;
-		dispatch(`${verb}ing`, { isOpen });
-		progress.set(contentHeight).then(() => {
-			isOpen = !isOpen;
-			collapsing = false;
-			rootEl.removeAttribute('style');
-			dispatch(`${verb}ed`, { isOpen });
-		});
-	};
+    if (verb === 'close') {
+      progress.set(contentHeight, { duration: 0 });
+      contentHeight = 0;
+    }
+    collapsing = true;
+    dispatch(`${verb}ing`, { isOpen });
+    progress.set(contentHeight).then(() => {
+      isOpen = !isOpen;
+      collapsing = false;
+      rootEl.removeAttribute('style');
+      dispatch(`${verb}ed`, { isOpen });
+    });
+  };
 
-	onMount(() => {
-		contentHeight = childsHeight(rootEl);
+  onMount(() => {
+    contentHeight = childsHeight(rootEl);
 
-		progress = tweened(null, {
-			...defaultMotion,
-			...motion
-		});
+    progress = tweened(null, {
+      ...defaultMotion,
+      ...motion
+    });
 
-		progress.subscribe((v) => (rootEl.style.height = `${v}px`));
-		progress.set(isOpen ? contentHeight : 0);
-	});
+    progress.subscribe((v) => (rootEl.style.height = `${v}px`));
+    progress.set(isOpen ? contentHeight : 0);
+  });
 
-	export const controls = {
-		open: () => collapse('open'),
-		close: () => collapse('close')
-	};
+  export const controls = {
+    open: () => collapse('open'),
+    close: () => collapse('close')
+  };
 </script>
 
 <div class={cleanClass([!isOpen ? closed : '', overflowHidden])} bind:this={rootEl}>
-	<slot />
+  <slot />
 </div>
