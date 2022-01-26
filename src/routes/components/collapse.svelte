@@ -13,6 +13,7 @@
 <Button disabled={!collapse1IsOpen} on:click={() => collapse1.close()} label="Close" />
 <Button
 	on:click={() => (collapse1IsOpen ? collapse1.close() : collapse1.open())}
+	busy={collapse1Collapsing}
 	disabled={collapse1Collapsing}
 	label="Toggle"
 />
@@ -55,6 +56,7 @@
 <Button
 	on:click={() => (collapse2IsOpen ? collapse2.close() : collapse2.open())}
 	label="Toggle"
+	busy={collapse2Collapsing}
 	disabled={collapse2Collapsing}
 />
 

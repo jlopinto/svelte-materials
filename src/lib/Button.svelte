@@ -1,8 +1,9 @@
 <script type="ts">
 	export let label = 'button_label';
+	export let busy = false;
 </script>
 
-<button on:click {...$$restProps}>
+<button on:click {...$$restProps} class:busy>
 	<slot name="before" />
 	{label}
 	<slot name="after" />
@@ -33,5 +34,9 @@
 	button[disabled] {
 		background-color: var(--inactive);
 		cursor: not-allowed;
+	}
+
+	.busy[disabled] {
+		cursor: wait;
 	}
 </style>
