@@ -44,6 +44,11 @@
     scrollbar-width: var(--scrollbar-width, thin);
   }
 
+  ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+  }
+
   .scrollable.block {
     flex-direction: column;
     overflow-y: scroll;

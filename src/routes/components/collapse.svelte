@@ -65,11 +65,9 @@
   bind:isOpen={collapse2IsOpen}
   bind:collapsing={collapse2Collapsing}
 >
-  <div>
-    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Neque iste consequuntur sint tempore
-    praesentium. Porro obcaecati debitis, quo, nostrum soluta atque quis dolores est quisquam
-    accusamus, corporis id quas commodi. Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-    Neque iste consequuntur sint tempore praesentium. Porro obcaecati debitis, quo, nostrum soluta
-    atque quis dolores est quisquam accusamus, corporis id quas commodi.
-  </div>
+  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Neque iste consequuntur sint tempore
+  praesentium. Porro obcaecati debitis, quo, nostrum soluta atque quis dolores est quisquam
+  accusamus, corporis id quas commodi. Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+  Neque iste consequuntur sint tempore praesentium. Porro obcaecati debitis, quo, nostrum soluta
+  atque quis dolores est quisquam accusamus, corporis id quas commodi.
 </Collapse>

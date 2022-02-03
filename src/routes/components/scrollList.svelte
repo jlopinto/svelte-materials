@@ -3,12 +3,15 @@
   import { ScrollList } from 'svelte-materials';
   import Demo from '$lib/cosmetic/Demo.svelte';
   import Button from '$lib/Button.svelte';
+  import Circle from '$lib/cosmetic/Circle.svelte';
 
   let carousel;
   let carouselActiveItem = 5;
   let slider;
   let sliderActiveItem = 1;
-  let items = Array.apply(null, { length: 10 }).map((_, i) => {
+  let scrollStack;
+  let scrollStackActiveItem = 10;
+  let items = Array.apply(null, { length: 5 }).map((_, i) => {
     return { name: `item ${++i}` };
   });
 
@@ -101,11 +104,31 @@
       }}
     >
       {#each items as { name }, i}
-        <Demo active={sliderActiveItem === i} {name} on:click={() => slider.goto(i)} />
+        <li>
+          <Demo active={sliderActiveItem === i} {name} on:click={() => slider.goto(i)} />
+        </li>
       {/each}
     </ScrollList>
     <Button on:click={() => slider.goto(sliderActiveItem - 1)} label="prev" />
     <Button on:click={() => slider.goto(sliderActiveItem + 1)} label="next" />
+  </div>
+
+  <h3>scrollList effect</h3>
+  <div class="scrollStack">
+    <ScrollList bind:list={scrollStack} bind:activeItem={scrollStackActiveItem}>
+      {#each items as { name }, i}
+        <li class="scrollStack-item" class:scrollStack-item--active={scrollStackActiveItem === i}>
+          <Circle
+            on:click={() => scrollStack.goto(i)}
+            {name}
+            active={scrollStackActiveItem === i}
+            on:click={() => scrollStack.goto(i)}
+          />
+        </li>
+      {/each}
+    </ScrollList>
+    <Button on:click={() => slider.goto(scrollStackActiveItem - 1)} label="prev" />
+    <Button on:click={() => slider.goto(scrollStackActiveItem + 1)} label="next" />
   </div>
 </section>
 
@@ -125,5 +148,27 @@
 
   :global(.control--prev) {
     margin-right: 1rem;
+  }
+
+  .scrollStack :global(.track) {
+    padding-top: 1rem;
+  }
+
+  .scrollStack-item:not(:first-child) {
+    margin-left: -1rem;
+    transition: transform 0.2s ease, margin 0.2s ease;
+  }
+
+  .scrollStack-item--active {
+    transform: translate3d(0, -1rem, 0);
+  }
+
+  .scrollStack-item:hover ~ .scrollStack-item,
+  .scrollStack-item--active ~ .scrollStack-item {
+    transform: translate3d(1rem, 0, 0);
+  }
+
+  .scrollStack-item:hover {
+    transform: translate3d(0, -1rem, 0);
   }
 </style>

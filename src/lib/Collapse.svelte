@@ -2,9 +2,9 @@
   import { closed } from './Collapse.css';
   import { overflowHidden } from '$lib/styles/utilities.css';
   import { onMount, createEventDispatcher } from 'svelte';
-  import { cubicIn as motionEase } from 'svelte/easing';
-  import { tweened } from 'svelte/motion';
-  import { childsHeight, cleanClass } from 'svelte-materials';
+  import { Tweened, tweened } from 'svelte/motion';
+  import { circInOut as defaultEase } from 'svelte/easing';
+  import { cleanClass } from 'svelte-materials';
 
   export let isOpen = false;
   export let motion = {};
@@ -12,33 +12,38 @@
 
   const dispatch = createEventDispatcher();
   const defaultMotion = {
-    duration: 100,
-    easing: motionEase
+    duration: 400,
+    easing: defaultEase
   };
 
   let rootEl: HTMLElement;
-  let contentHeight;
-  let progress;
+  let contentEl: HTMLElement;
+  let contentHeight: number;
+  let progress: Tweened<number>;
 
-  const collapse = (verb: 'open' | 'close') => {
-    contentHeight = childsHeight(rootEl);
+  const getContentHeight = () => (contentHeight = contentEl.getBoundingClientRect().height);
 
-    if (verb === 'close') {
+  const collapse = (open = false) => {
+    getContentHeight();
+
+    if (!open) {
       progress.set(contentHeight, { duration: 0 });
       contentHeight = 0;
     }
+
     collapsing = true;
-    dispatch(`${verb}ing`, { isOpen });
+    dispatch('collapsing', { isOpen });
+
     progress.set(contentHeight).then(() => {
       isOpen = !isOpen;
       collapsing = false;
       rootEl.removeAttribute('style');
-      dispatch(`${verb}ed`, { isOpen });
+      dispatch('collapsed', { isOpen });
     });
   };
 
   onMount(() => {
-    contentHeight = childsHeight(rootEl);
+    getContentHeight();
 
     progress = tweened(null, {
       ...defaultMotion,
@@ -50,11 +55,13 @@
   });
 
   export const controls = {
-    open: () => collapse('open'),
-    close: () => collapse('close')
+    open: () => collapse(true),
+    close: () => collapse()
   };
 </script>
 
 <div class={cleanClass([!isOpen ? closed : '', overflowHidden])} bind:this={rootEl}>
-  <slot />
+  <div bind:this={contentEl}>
+    <slot />
+  </div>
 </div>
