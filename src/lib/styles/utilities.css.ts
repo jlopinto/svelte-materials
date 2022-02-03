@@ -9,7 +9,11 @@ const responsiveProperties = defineProperties({
     desktop: { '@media': 'screen and (min-width: 1024px)' }
   },
   defaultCondition: 'mobile',
+  responsiveArray: ['mobile', 'tablet', 'desktop'],
   properties: {
+    color: vars.colors,
+    backgroundColor: vars.colors,
+    borderColor: vars.colors,
     marginTop: vars.spaces,
     marginBottom: vars.spaces,
     marginLeft: vars.spaces,
@@ -18,13 +22,17 @@ const responsiveProperties = defineProperties({
     paddingBottom: vars.spaces,
     paddingLeft: vars.spaces,
     paddingRight: vars.spaces,
+    borderRadius: vars.rounded,
     height: vars.spaces,
     display: ['none', 'flex', 'grid', 'block'],
     flexDirection: ['row', 'row-reverse', 'column'],
-    width: vars.widths,
-    gridTemplateColumns: vars.gridCols,
+    width: { ...vars.widths, ...vars.spaces },
+    gridTemplateColumns: vars.gridColsTemplate,
+    gridTemplateRows: vars.gridColsTemplate,
     gridColumn: vars.gridColSpan,
+    gridRow: vars.gridColSpan,
     gap: vars.spaces,
+    boxShadow: vars.boxShadow,
     justifyContent: [
       'stretch',
       'flex-start',
@@ -33,6 +41,7 @@ const responsiveProperties = defineProperties({
       'space-around',
       'space-between'
     ],
+    order: vars.orders,
     alignItems: ['stretch', 'flex-start', 'center', 'flex-end'],
     position: ['relative', 'absolute', 'fixed', 'sticky'],
     fontSize: vars.fontSizes,
@@ -49,7 +58,7 @@ const responsiveProperties = defineProperties({
 });
 
 export const sprinkles = createSprinkles(responsiveProperties);
-
+export type Sprinkles = Parameters<typeof sprinkles>[0];
 export const overflowHidden = sprinkles({
   overflow: 'hidden'
 });

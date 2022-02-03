@@ -10,7 +10,7 @@
 
 <script lang="ts">
   import '$lib/styles/index.css';
-  import { themeClass } from '$lib/styles/theme-default.css';
+  import Theme from '$lib/Theme.svelte';
 
   import { MediaBlock, Spread, Link, ScrollList } from 'svelte-materials';
   import '../app.css';
@@ -23,11 +23,14 @@
     { url: '/components/mediaBlock', label: 'MediaBlock' },
     { url: '/components/spread', label: 'Spread' },
     { url: '/components/link', label: 'Link' },
-    { url: '/components/collapse', label: 'Collapse' }
+    { url: '/components/collapse', label: 'Collapse' },
+    { url: '/components/grid', label: 'Grid' },
+    { url: '/components/button', label: 'Button' },
+    { url: '/components/vars', label: 'Variables' }
   ];
 </script>
 
-<Spread>
+<Spread --var-plop="red">
   <header>
     <div class="container">
       <MediaBlock --align-items="center" class="py">

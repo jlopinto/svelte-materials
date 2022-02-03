@@ -36,6 +36,7 @@
     cursor: not-allowed;
   }
 
+  .busy,
   .busy[disabled] {
     cursor: wait;
   }
