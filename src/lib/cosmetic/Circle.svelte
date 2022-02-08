@@ -10,9 +10,9 @@
   on:click
   {...$$restProps}
   class={sprinkles({
-    width: '8x',
-    height: '8x',
-    backgroundColor: active ? 'blue200' : 'gold200',
+    width: '8',
+    height: '8',
+    backgroundColor: active ? 'blue200' : 'active200',
     borderRadius: 'full',
     boxShadow: 'xl'
   })}

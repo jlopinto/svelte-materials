@@ -1,6 +1,6 @@
-import { recipe, RecipeVariants } from '@vanilla-extract/recipes';
+import { recipe } from '@vanilla-extract/recipes';
 
-export const root = recipe({
+export const mediaBlock = recipe({
   base: {
     display: 'flex'
   },
@@ -18,5 +18,3 @@ export const root = recipe({
     }
   }
 });
-
-export type rootType = RecipeVariants<typeof root>;

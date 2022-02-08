@@ -1,6 +1,5 @@
 <script type="ts">
-  import { closed } from './Collapse.css';
-  import { overflowHidden } from '$lib/styles/utilities.css';
+  import { sprinkles } from './styles/utilities.css';
   import { onMount, createEventDispatcher } from 'svelte';
   import { Tweened, tweened } from 'svelte/motion';
   import { circInOut as defaultEase } from 'svelte/easing';
@@ -60,7 +59,19 @@
   };
 </script>
 
-<div class={cleanClass([!isOpen ? closed : '', overflowHidden])} bind:this={rootEl}>
+<div
+  class={cleanClass([
+    !isOpen
+      ? sprinkles({
+          height: 'none'
+        })
+      : '',
+    sprinkles({
+      overflow: 'hidden'
+    })
+  ])}
+  bind:this={rootEl}
+>
   <div bind:this={contentEl}>
     <slot />
   </div>

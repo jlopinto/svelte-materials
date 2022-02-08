@@ -31,6 +31,8 @@ const responsiveProperties = defineProperties({
     gridTemplateRows: vars.gridColsTemplate,
     gridColumn: vars.gridColSpan,
     gridRow: vars.gridColSpan,
+    gridAutoColumns: vars.gridAuto,
+    gridAutoRows: vars.gridAuto,
     gap: vars.spaces,
     boxShadow: vars.boxShadow,
     justifyContent: [
@@ -41,10 +43,22 @@ const responsiveProperties = defineProperties({
       'space-around',
       'space-between'
     ],
+    flex: ['1'],
     order: vars.orders,
     alignItems: ['stretch', 'flex-start', 'center', 'flex-end'],
     position: ['relative', 'absolute', 'fixed', 'sticky'],
     fontSize: vars.fontSizes,
+    fontWeight: {
+      thin: '100',
+      extralight: '200',
+      light: '300',
+      normal: '400',
+      medium: '500',
+      semibold: '600',
+      bold: '700',
+      extrabold: '800',
+      black: '900'
+    },
     overflow: ['visible', 'hidden', 'scroll', 'auto']
   },
   shorthands: {
@@ -59,10 +73,3 @@ const responsiveProperties = defineProperties({
 
 export const sprinkles = createSprinkles(responsiveProperties);
 export type Sprinkles = Parameters<typeof sprinkles>[0];
-export const overflowHidden = sprinkles({
-  overflow: 'hidden'
-});
-
-export const flex1 = style({
-  flex: '1'
-});

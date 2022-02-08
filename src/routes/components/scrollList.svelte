@@ -1,8 +1,7 @@
 <script>
   import { tick } from 'svelte';
-  import { ScrollList } from 'svelte-materials';
+  import { ScrollList, Button } from 'svelte-materials';
   import Demo from '$lib/cosmetic/Demo.svelte';
-  import Button from '$lib/Button.svelte';
   import Circle from '$lib/cosmetic/Circle.svelte';
 
   let carousel;
@@ -127,8 +126,8 @@
         </li>
       {/each}
     </ScrollList>
-    <Button on:click={() => slider.goto(scrollStackActiveItem - 1)} label="prev" />
-    <Button on:click={() => slider.goto(scrollStackActiveItem + 1)} label="next" />
+    <Button on:click={() => scrollStack.goto(scrollStackActiveItem - 1)} label="prev" />
+    <Button on:click={() => scrollStack.goto(scrollStackActiveItem + 1)} label="next" />
   </div>
 </section>
 

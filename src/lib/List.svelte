@@ -6,21 +6,22 @@
   export let unstyled = false;
   export let scrollable = false;
 
+  const { class: userClass, ...restProps } = $$restProps;
   const classNames = cleanClass([
     'track',
     flow,
     unstyled ? 'unstyled' : '',
     scrollable ? 'scrollable unstyled' : '',
-    $$restProps?.class
+    userClass
   ]);
 </script>
 
 {#if type === 'ordered'}
-  <ol bind:this={list} class={classNames} {...$$restProps}>
+  <ol bind:this={list} class={classNames} {...restProps}>
     <slot />
   </ol>
 {:else}
-  <ul bind:this={list} class={classNames} {...$$restProps}>
+  <ul bind:this={list} class={classNames} {...restProps}>
     <slot />
   </ul>
 {/if}
@@ -29,8 +30,13 @@
   ul,
   ol {
     display: flex;
+    flex-direction: column;
     max-height: var(--track-height, auto);
     gap: var(--gap, 0);
+  }
+
+  .inline {
+    flex-direction: row;
   }
 
   .unstyled {

@@ -9,8 +9,8 @@ const spaceScale = createScale(1.4, 4);
 
 const colors = [
   {
-    name: 'gold',
-    color: '#d6ba57'
+    name: 'active',
+    color: '#892be2fa'
   },
   {
     name: 'blue',
@@ -58,14 +58,14 @@ export const vars = {
   spaces: {
     auto: 'auto',
     none: '0',
-    '1x': spaceScale(1),
-    '2x': spaceScale(2),
-    '3x': spaceScale(3),
-    '4x': spaceScale(4),
-    '5x': spaceScale(5),
-    '6x': spaceScale(6),
-    '7x': spaceScale(7),
-    '8x': spaceScale(8)
+    '1': spaceScale(1),
+    '2': spaceScale(2),
+    '3': spaceScale(3),
+    '4': spaceScale(4),
+    '5': spaceScale(5),
+    '6': spaceScale(6),
+    '7': spaceScale(7),
+    '8': spaceScale(8)
   },
   colors: generatePalette(colors, shadeVariations),
   borders: {
@@ -117,6 +117,9 @@ export const vars = {
     full: '100%'
   },
   gridColsTemplate: {
+    auto: 'auto',
+    fit: 'repeat(auto-fit, minmax(0, 1fr))',
+    fill: 'repeat(auto-fill, minmax(0, 1fr))',
     1: 'repeat(1, minmax(0, 1fr))',
     2: 'repeat(2, minmax(0, 1fr))',
     3: 'repeat(3, minmax(0, 1fr))',
@@ -131,6 +134,7 @@ export const vars = {
     12: 'repeat(12, minmax(0, 1fr))'
   },
   gridColSpan: {
+    auto: 'auto',
     1: 'span 1/span 1',
     2: 'span 2/span 2',
     3: 'span 3/span 3',
@@ -143,5 +147,9 @@ export const vars = {
     10: 'span 10/span 10',
     11: 'span 11/span 11',
     12: 'span 12/span 12'
+  },
+  gridAuto: {
+    auto: 'auto',
+    1: '1fr'
   }
 };

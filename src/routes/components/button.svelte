@@ -1,8 +1,5 @@
 <script type="ts">
-  import { Button } from 'svelte-materials';
-  import Code from '$lib/Code.svelte';
-  import '$lib/Code.css';
-
+  import { Button, Code } from 'svelte-materials';
   const demo = `
 <Collapse
     bind:controls={collapse2}
