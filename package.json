@@ -12,7 +12,8 @@
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
     "lint": "prettier --ignore-path .gitignore --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
-    "format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. ."
+    "format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. .",
+    "tsc": "tsc --noEmit --listFiles"
   },
   "devDependencies": {
     "@sveltejs/adapter-auto": "next",
@@ -20,22 +21,25 @@
     "@types/cookie": "^0.4.1",
     "@typescript-eslint/eslint-plugin": "^4.31.1",
     "@typescript-eslint/parser": "^4.31.1",
-    "@vanilla-extract/css": "^1.6.8",
-    "@vanilla-extract/css-utils": "^0.1.2",
-    "@vanilla-extract/dynamic": "^2.0.2",
-    "@vanilla-extract/recipes": "^0.2.3",
-    "@vanilla-extract/sprinkles": "^1.3.3",
-    "@vanilla-extract/vite-plugin": "^3.1.1",
+    "autoprefixer": "^10.4.2",
+    "cssnano": "^5.1.0",
+    "dotenv": "^16.0.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-svelte3": "^3.2.1",
+    "open-props": "^1.3.9",
     "polished": "^4.1.4",
+    "postcss": "^8.4.7",
+    "postcss-combine-duplicated-selectors": "^10.0.3",
+    "postcss-jit-props": "^1.0.4",
+    "postcss-load-config": "^3.1.1",
+    "postcss-merge-selectors": "^0.0.6",
     "prettier": "^2.4.1",
     "prettier-plugin-svelte": "^2.4.0",
     "prismjs": "^1.26.0",
     "svelte": "^3.44.0",
     "svelte-check": "^2.2.6",
-    "svelte-preprocess": "^4.9.4",
+    "svelte-preprocess": "^4.10.1",
     "svelte-prism": "^1.1.3",
     "svelte2tsx": "^0.4.14",
     "tslib": "^2.3.1",
@@ -44,5 +48,6 @@
   "type": "module",
   "exports": {
     ".": "./src/lib/index.ts"
-  }
+  },
+  "dependencies": {}
 }

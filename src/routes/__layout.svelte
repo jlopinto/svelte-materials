@@ -1,22 +1,8 @@
-<script context="module">
-  export async function load({ url }) {
-    return {
-      props: {
-        pathname: url.pathname
-      }
-    };
-  }
-</script>
-
 <script lang="ts">
-  import List from '$lib/List.svelte';
-  import '$lib/styles/index.css';
-  import { sprinkles } from '$lib/styles/utilities.css';
-
-  import { MediaBlock, Spread, Link, ScrollList } from 'svelte-materials';
+  import { page } from '$app/stores';
   import '../app.css';
-
-  export let pathname;
+  import List from '$lib/List.svelte';
+  import { Link, MediaBlock, ScrollList, Spread } from 'svelte-materials';
 
   const navContent = [
     { label: 'home', pages: [{ url: '/', label: 'home' }] },
@@ -42,15 +28,6 @@
         { url: '/components/collapse', label: 'Collapse' },
         { url: '/components/button', label: 'Button' }
       ]
-    },
-    {
-      label: 'forms',
-      pages: [
-        { url: '/components/scrollList', label: 'ScrollList' },
-        { url: '/components/link', label: 'Link' },
-        { url: '/components/collapse', label: 'Collapse' },
-        { url: '/components/button', label: 'Button' }
-      ]
     }
   ];
 </script>
@@ -69,24 +46,14 @@
       <nav class="mainnav">
         <ScrollList flow="block" --scrollbar-width="none" unstyled>
           {#each navContent as { label, pages }}
-            <li
-              class={sprinkles({
-                marginTop: '1'
-              })}
-            >
-              <div
-                class={sprinkles({
-                  marginTop: '1',
-                  fontSize: 'fontSize2',
-                  fontWeight: 'bold'
-                })}
-              >
+            <li>
+              <div>
                 {label}
               </div>
               <List flow="block" class="mainnav" unstyled>
                 {#each pages as { url, label }}
                   <li>
-                    <Link class="mainnav__item {url === pathname ? 'active' : ''}" href={url}>
+                    <Link class="mainnav__item {url === page.pathname ? 'active' : ''}" href={url}>
                       {label}
                     </Link>
                   </li>

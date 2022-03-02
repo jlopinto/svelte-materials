@@ -1,19 +1,20 @@
 <script type="ts">
-  import { mediaBlock } from './MediaBlock.css';
-  import { sprinkles } from '$lib/styles/utilities.css';
-
   const { class: userClass = '', ...restProps } = $$restProps;
-
-  export let alignItems: 'center' | 'end' | 'start' = 'start';
 </script>
 
-<div
-  class="{mediaBlock({
-    alignItems
-  })} {userClass}"
-  {...restProps}
->
+<div class="media {userClass}" {...restProps}>
   <slot name="start" />
-  <div class={sprinkles({ flex: '1' })}><slot /></div>
+  <div class="media-body"><slot /></div>
   <slot name="end" />
 </div>
+
+<style lang="postcss">
+  .media {
+    display: flex;
+    align-items: var(--mediaBlockAlignItems, 'flex-start');
+  }
+
+  .media-block {
+    flex-grow: 1;
+  }
+</style>

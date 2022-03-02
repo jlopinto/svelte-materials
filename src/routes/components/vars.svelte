@@ -1,4 +1,4 @@
-<script type="ts">
+<!-- <script type="ts">
   import { sprinkles } from '$lib/styles/utilities.css';
   import { vars } from 'svelte-materials';
 </script>
@@ -9,4 +9,4 @@
   <div class={sprinkles({ color })}>
     {color}
   </div>
-{/each}
+{/each} -->

@@ -1,0 +1,93 @@
+/* #root {
+  --fontSize-0: 0.625rem;
+  --fontSize-1: 0.75rem;
+  --fontSize-3: 0.875rem;
+  --fontSize-4: 1rem;
+  --fontSize-5: 1.125rem;
+  --fontSize-6: 1.5rem;
+  --fontSize-7: 1.875rem;
+  --fontSize-8: 2.25rem;
+  --fontSize-9: 3rem;
+  --fontSize-10: 4.75rem;
+  --fontSize-11: 5.5rem;
+  --fontSize-12: 7rem;
+
+  --width-0: 0;
+  --width-px: 1px;
+  --width-1: 0.5rem;
+  --width-2: 1rem;
+  --width-3: 1.5rem;
+  --width-4: 2rem;
+  --width-5: 2.5rem;
+  --width-6: 3rem;
+  --width-7: 3.5rem;
+  --width-8: 4rem;
+  --width-9: 4.5rem;
+  --width-10: 5rem;
+  --width-11: 5.5rem;
+  --width-12: 6rem;
+  --width-full: 100%;
+  --width-auto: auto;
+
+  --space-0: 0;
+  --space-px: 1px;
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-5: 2.5rem;
+  --space-6: 3rem;
+  --space-7: 3.5rem;
+  --space-8: 4rem;
+  --space-9: 4.5rem;
+
+  --zIndex-cover: 500;
+  --zIndex-popin: 400;
+  --zIndex-nav: 300;
+  --zIndex-sticky: 200;
+  --zIndex-content: 100;
+  --zIndex-body: 1;
+  --zIndex-back: -1;
+
+  --container-xs: 30rem;
+  --container-sm: 40rem;
+  --container-md: 48em;
+  --container-lg: 64em;
+  --container-xl: 80rem;
+
+  --grid-2: repeat(2, minmax(0, 1fr));
+  --grid-3: repeat(3, minmax(0, 1fr));
+  --grid-4: repeat(4, minmax(0, 1fr));
+  --grid-5: repeat(5, minmax(0, 1fr));
+  --grid-6: repeat(6, minmax(0, 1fr));
+  --grid-7: repeat(7, minmax(0, 1fr));
+  --grid-8: repeat(8, minmax(0, 1fr));
+  --grid-9: repeat(9, minmax(0, 1fr));
+  --grid-10: repeat(10, minmax(0, 1fr));
+  --grid-11: repeat(11, minmax(0, 1fr));
+  --grid-12: repeat(12, minmax(0, 1fr));
+
+  --color-state-active: red;
+  --color-state-hover: red;
+  --color-state-focus: red;
+  --color-state-inactive: red;
+  --color-state-disabled: red;
+  --color-state-disallow: red;
+
+  --color-text-light: red;
+  --color-text-deep: red;
+  --color-text: red;
+  --color-headings: red;
+
+  --color-highlight: red;
+  --color-highlight-light: red;
+  --color-highlight-deep: red;
+
+  --app-bg-color: red;
+
+  font-size: var(--font-size-base, 1rem);
+  background-image: linear-gradient(180deg, var(--contentBg, red) 0%, var(--appBg, gold) 70%);
+  min-height: 100vh;
+  color: #444;
+  font-family: var(--base-font-family, sans-serif);
+} */

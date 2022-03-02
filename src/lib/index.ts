@@ -9,6 +9,4 @@ export { default as Grid } from './Grid.svelte';
 export { default as GridItem } from './GridItem.svelte';
 export { default as Code } from './Code.svelte';
 
-export { vars } from './styles/vars.css.js';
-
 export { cleanClass, childsHeight, generatePalette } from './utils.js';
