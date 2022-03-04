@@ -1,4 +1,5 @@
 <script type="ts">
+  import PageTitle from '$lib/cosmetic/PageTitle.svelte';
   import { Button, Code } from 'svelte-materials';
   const demo = `
 <Collapse
@@ -15,14 +16,32 @@
   `;
 </script>
 
-<h2>Button</h2>
+<PageTitle>Button</PageTitle>
 
 <Code entry={`<Button label="Un bouton" />`} />
-<Button />
 
 <h3>Complex HTML</h3>
 <Code entry={demo} />
 <Button label="Un bouton" />
 <Button label="Un bouton disabled" disabled />
 <Button busy>Un bouton busy</Button>
+
 <Button label="Un bouton busy disabled" busy disabled />
+
+<hr />
+
+<Button class="myButtonStyle">Un bouton stylé (class)</Button>
+<Button --Button-color="#349534">Un bouton stylé (svelte cssvar)</Button>
+<Button styles={{ color: 'gold' }}>Un bouton stylé (props)</Button>
+
+<style lang="postcss">
+  :global(.myButtonStyle) {
+    --Button-color: red;
+    --Button-padding: 1rem;
+  }
+
+  :global(.myButtonStyle:hover) {
+    --Button-color: #349534;
+    --Button-padding: 2em;
+  }
+</style>

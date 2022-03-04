@@ -8,12 +8,12 @@ console.log(process.env.NODE_ENV); // remove this after you've confirmed it work
 
 const config = {
   plugins: [
-    postcssJitProps(OpenProps),
-    autoprefixer,
-    postcssCombine(),
-    cssnano({
-      preset: ['default', { mergeRules: true }]
-    })
+    // postcssJitProps(OpenProps),
+    autoprefixer
+    // postcssCombine(),
+    // cssnano({
+    //   preset: ['default', { mergeRules: true }]
+    // })
   ]
 };
 

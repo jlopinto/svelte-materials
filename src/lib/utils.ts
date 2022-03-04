@@ -26,3 +26,10 @@ export const generatePalette = (colors = [], shadesConfig) => {
 
   return palette;
 };
+
+export const inlineCssVars = (styles: object, prefix: string, separator = '-') =>
+  [...Object.entries(styles)]
+    .map(([property, value]) => {
+      return `${prefix}${separator}${property}: ${value};`;
+    })
+    .join(' ');

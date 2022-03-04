@@ -1,9 +1,13 @@
 <script type="ts">
+  import { inlineCssVars } from '$lib/utils';
   export let label: string = null;
   export let busy = false;
+  export let styles = {};
+
+  $: cssVars = inlineCssVars(styles, '--Button');
 </script>
 
-<button on:click class:busy {...$$restProps}>
+<button on:click class:busy {...$$restProps} style={cssVars}>
   <slot name="before" />
   {label ?? ''}
   <slot />
@@ -17,12 +21,14 @@
     --_background: var(--violet-4);
     --_border: var(--border-size-2);
     --_transition: var(--ease-in-2);
-    --_padding: var(--size-2) var(--size-2);
+    --_padding: 0.5em;
     --_lineHeight: 1;
+    --_fontSize: 1rem;
     --_cursor: pointer;
 
     padding: var(--Button-padding, var(--_padding));
     border-radius: var(--Button-radius, var(--_radius));
+    font-size: var(--Button-fontSize, var(--_fontSize));
     line-height: var(--Button-lineHeight, var(--_lineHeight));
     background: var(--Button-background, var(--_background));
     border: var(--Button-border, var(--_border));

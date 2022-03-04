@@ -1,8 +1,8 @@
 <script lang="ts">
   import { page } from '$app/stores';
+  import MainNav from '$lib/cosmetic/MainNav.svelte';
+  import { Spread } from 'svelte-materials';
   import '../app.css';
-  import List from '$lib/List.svelte';
-  import { Link, MediaBlock, ScrollList, Spread } from 'svelte-materials';
 
   const navContent = [
     { label: 'home', pages: [{ url: '/', label: 'home' }] },
@@ -14,7 +14,6 @@
           url: '/components/grid',
           label: 'Grid'
         },
-        { url: '/components/gridItem', label: 'GridItem' },
         { url: '/components/mediaBlock', label: 'MediaBlock' },
         { url: '/components/spread', label: 'Spread' }
       ]
@@ -35,34 +34,15 @@
 <Spread>
   <header>
     <div class="container">
-      <MediaBlock --align-items="center" class="py">
-        <h1 slot="start" class="mr">svelte-materials</h1>
-        <div>Reduction de composants, à la sauce svelte</div>
-      </MediaBlock>
+      <h1>svelte-materials</h1>
+      <div>Reduction de composants, à la sauce svelte</div>
     </div>
   </header>
   <div class="container">
     <div class="layout">
-      <nav class="mainnav">
-        <ScrollList flow="block" --scrollbar-width="none" unstyled>
-          {#each navContent as { label, pages }}
-            <li>
-              <div>
-                {label}
-              </div>
-              <List flow="block" class="mainnav" unstyled>
-                {#each pages as { url, label }}
-                  <li>
-                    <Link class="mainnav__item {url === page.pathname ? 'active' : ''}" href={url}>
-                      {label}
-                    </Link>
-                  </li>
-                {/each}
-              </List>
-            </li>
-          {/each}
-        </ScrollList>
-      </nav>
+      <div class="sidebar">
+        <MainNav content={navContent} currentPath={$page.url.pathname} />
+      </div>
       <main>
         <slot />
       </main>
@@ -74,14 +54,13 @@
 </Spread>
 
 <style>
-  :global(.debug, .debug *) {
-    outline: 1px solid steelblue;
-    outline-offset: -1px;
-    background-color: var(--debug-bg, rgba(44, 135, 203, 0.2));
+  header {
+    padding-block: var(--size-5);
   }
+  
   .container {
     max-width: 100%;
-    width: 960px;
+    width: var(--size-md);
     margin-inline: auto;
   }
 
@@ -92,41 +71,14 @@
   .layout {
     display: grid;
     grid-template-columns: repeat(9, minmax(0, 1fr));
-    gap: 1 rem;
+    gap: var(--size-4)
   }
 
   main {
     grid-column: span 7 / span 7;
   }
 
-  .mainnav {
+  .sidebar {
     grid-column: span 2 / span 2;
-  }
-
-  .mainnav :global(.mainnav__item) {
-    padding: 0.5rem 1rem;
-    display: block;
-    border-left: 2px solid var(--inactive);
-  }
-
-  .mainnav :global(.mainnav__item:hover) {
-    border-color: var(--active);
-  }
-
-  .mainnav :global(li:not(:first-child) .mainnav__item) {
-    margin-top: 0.2rem;
-  }
-
-  .mainnav :global(.active) {
-    border-color: var(--active);
-    color: var(--active);
-  }
-
-  .mainnav :global(.mainnav__group) {
-    margin-top: 1rem;
-  }
-
-  .mainnav :global(.mainnav__group-label) {
-    padding: 1rem 0;
   }
 </style>

@@ -1,38 +1,54 @@
 /* Write your global styles here, in PostCSS syntax */
+@import 'https://unpkg.com/open-props@1.3.9/open-props.min.css';
 
 :root {
-  font-family: Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu;
-  --active: rgba(137, 43, 226, 0.979);
-  --active-dark: rgba(109, 33, 180, 0.979);
-  --active-light: rgba(159, 89, 224, 0.979);
+  --body-background: var(--gray-9);
+  --body-color: var(--gray-1);
+  --body-font: Arial, -apple-system, BlinkMacSystemFont, ' Segoe UI ', Roboto, Oxygen, Ubuntu;
 
-  --inactive: rgba(193, 164, 219, 0.979);
+  --default: var(--gray-1);
+  --default-light: var(--gray-3);
+  --default-deep: var(--gray-6);
 
-  --bg: #222;
-  --body: var(--teal-5);
+  --primary: var(--blue-1);
+  --primary-light: var(--blue-3);
+  --primary-deep: var(--blue-6);
+
+  --secondary: var(--gray-2);
+  --secondary-light: var(--gray-1);
+  --secondary-deep: var(--gray-3);
+}
+
+.debug,
+.debug * {
+  outline: 1px solid var(--red-7);
+  background-color: var(--red-5);
+  outline-offset: -1px;
 }
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  min-height: 100vh;
-  margin: 0;
-  background-color: var(--body);
-  color: var(--bodyssss);
+  font-family: var(--body-font);
+  background-color: var(--body-background);
+  color: var(--body-color);
 }
 
 #svelte {
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
 h1,
 h2,
 h3 {
   font-weight: 700;
+  color: var(--primary-deep);
 }
 
 h1 {

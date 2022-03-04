@@ -1,4 +1,5 @@
 <script>
+  import PageTitle from '$lib/cosmetic/PageTitle.svelte';
 </script>
 
 <svelte:head>
@@ -6,5 +7,7 @@
 </svelte:head>
 
 <section>
-  <h2>Home</h2>
+  <PageTitle>About</PageTitle>
+
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia modi, quibusdam magni facilis consequatur, iusto mollitia voluptates explicabo at similique ipsum omnis est ducimus nobis natus asperiores minima veniam soluta.</p>
 </section>
