@@ -2,54 +2,35 @@
   import { Grid, Code, GridItem } from 'svelte-materials';
   import Box from '$lib/cosmetic/Box.svelte';
 
-  const demo1 = `
-  <Grid>
-      <Box>Col 1</Box>
-      <Box>Col 2</Box>
-      <Box>Col 3</Box>
-      <Box>Col 4</Box>
-      <Box>Col 5</Box>
-      <Box>Col 6</Box>
-      <Box>Col 7</Box>
-      <Box>Col 8</Box>
-      <Box>Col 9</Box>
-      <Box>Col 10</Box>
-      <Box>Col 11</Box>
-      <Box>Col 12</Box>
-  </Grid>
-  `;
-</script>
-
-<h2>3 cols auto, 1 row</h2>
-<Grid>
-  {#each Array(12).fill('') as item, i}
+  const demo1 = `<Grid --Grid-cols="6">
+  {#each Array(6).fill('') as item, i}
     <Box>Col {i + 1}</Box>
   {/each}
-</Grid>
+</Grid>`;
+</script>
 
-<Code entry={demo1} />
-
-<h2>4 col, 4 row</h2>
-<Grid>
-  <GridItem order={{ mobile: 'last', tablet: 'none' }} colspan={{ tablet: 4 }}>
-    <Box>Aside</Box></GridItem
-  >
-  <GridItem colspan={{ tablet: 8 }}>
-    <Box>Content</Box>
-  </GridItem>
-</Grid>
-
-<h2>4 col, 4 row</h2>
-<Grid columns="6">
-  <GridItem colspan={{ mobile: 1 }}>
-    <Box>Aside</Box>
-  </GridItem>
-  <GridItem colspan={{ mobile: 4 }}><Box>Content</Box></GridItem>
-  <GridItem colspan={{ mobile: 1 }}><Box>Aside</Box></GridItem>
+<Grid --Grid-gap="1rem">
+  <h2>6 cols auto, 1 row</h2>
+  <Code entry={demo1} />
+  <Grid --Grid-cols="6">
+    {#each Array(6).fill('') as item, i}
+      <Box>Col {i + 1}</Box>
+    {/each}
+  </Grid>
 </Grid>
 
 <Grid>
-  <GridItem colspan={{ tablet: 3 }}><Box>Aside</Box></GridItem>
-  <GridItem colspan={{ tablet: 6 }}><Box>Content</Box></GridItem>
-  <GridItem colspan={{ tablet: 3 }}><Box>Aside</Box></GridItem>
+  <h2>GridItem</h2>
+  <Code
+    entry={`<Grid --Grid-cols="3" --Grid-rows="3">
+  <GridItem --GridItem-rowspan="3"><Box>01</Box></GridItem>
+  <GridItem --GridItem-colspan="2"><Box>02</Box></GridItem>
+  <GridItem --GridItem-colspan="2" --GridItem-rowspan="2"><Box>03</Box></GridItem>
+</Grid>`}
+  />
+  <Grid --Grid-cols="3" --Grid-rows="3">
+    <GridItem --GridItem-rowspan="3"><Box>01</Box></GridItem>
+    <GridItem --GridItem-colspan="2"><Box>02</Box></GridItem>
+    <GridItem --GridItem-colspan="2" --GridItem-rowspan="2"><Box>03</Box></GridItem>
+  </Grid>
 </Grid>

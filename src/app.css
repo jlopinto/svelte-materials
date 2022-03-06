@@ -17,6 +17,17 @@
   --secondary: var(--gray-2);
   --secondary-light: var(--gray-1);
   --secondary-deep: var(--gray-3);
+
+  --controls-radius: var(--radius-1);
+  --controls-color: var(--violet-1);
+  --controls-background: var(--violet-4);
+  --controls-background-light: var(--violet-2);
+  --controls-background-deep: var(--violet-6);
+  --controls-border: var(--border-size-2);
+  --controls-lineHeight: 1;
+  --controls-cursor: pointer;
+  --controls-transition: var(--ease-in-2);
+  --controls-padding: var(--size-2);
 }
 
 .debug,

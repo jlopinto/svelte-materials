@@ -15,7 +15,7 @@
     display: block;
     background-color: var(--bgColor, #1d1f21);
     border-radius: var(--borderRadius, 0.25rem);
-    padding: var(--paddingY, 1rem) var(--paddingX, 1rem);
+    padding: var(--paddingY, 1em) var(--paddingX, 1em);
   }
 
   pre {

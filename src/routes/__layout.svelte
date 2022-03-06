@@ -1,8 +1,8 @@
 <script lang="ts">
+  import '../app.css';
   import { page } from '$app/stores';
   import MainNav from '$lib/cosmetic/MainNav.svelte';
   import { Spread } from 'svelte-materials';
-  import '../app.css';
 
   const navContent = [
     { label: 'home', pages: [{ url: '/', label: 'home' }] },
@@ -57,7 +57,7 @@
   header {
     padding-block: var(--size-5);
   }
-  
+
   .container {
     max-width: 100%;
     width: var(--size-md);
@@ -71,7 +71,7 @@
   .layout {
     display: grid;
     grid-template-columns: repeat(9, minmax(0, 1fr));
-    gap: var(--size-4)
+    gap: var(--size-4);
   }
 
   main {

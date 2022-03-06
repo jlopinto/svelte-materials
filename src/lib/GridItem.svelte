@@ -1,9 +1,17 @@
-<script type="ts">
-  // export let colspan = null;
-  // export let rowspan = null;
-  // export let order = null;
+<script>
+  import Flex from './Flex.svelte';
 </script>
 
-<div>
+<Flex class="gridItem">
   <slot />
-</div>
+</Flex>
+
+<style>
+  :global(.gridItem) {
+    --_GridItem-colspan: auto;
+    --_GridItem-rowspan: auto;
+
+    grid-row: span var(--GridItem-rowspan, var(--_GridItem-rowspan));
+    grid-column: span var(--GridItem-colspan, var(--_GridItem-colspan));
+  }
+</style>
